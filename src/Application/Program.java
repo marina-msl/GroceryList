@@ -1,7 +1,7 @@
 // TODO
-// 1 - Organizing classes
+// 1 - Organizing classes -> DB
 // 3 - Code IHM
-// 4 - Put the code into the GIT
+// 4 - Organizing classes -> GUI
 
 package Application;
 
@@ -20,7 +20,7 @@ public class Program {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		// ---------------> Inserçao de Dados pelo usuario
+		// ---------------> Requesting data's products from users
 		  System.out.println("Digite o nome do produto"); 
 		  String name_product = sc.next();
 		  
@@ -31,7 +31,7 @@ public class Program {
 		  double price_product = sc.nextDouble();
 		 
 		
-		// --------------> Inclusao dos dados no banco de dados
+		// --------------> Inserting datas in database
 		Connection conn = null;
 		PreparedStatement st = null;
 		try {
@@ -59,7 +59,7 @@ public class Program {
 		 * finally { DB.closeStatement(st); DB.closeConnection(); }
 		 */
 		
-		// --------------> Recuperação de dados do banco de dados
+		// --------------> Recovering data
 		
 		//Connection conn = null;
 		
@@ -84,5 +84,8 @@ public class Program {
 				DB.closeStatement(statement);
 				DB.closeConnection();
 			}
+			
+			
+			// ----------------> Requesting which product should be delete in database
 		}
 	}	
