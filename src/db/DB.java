@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+
 public class DB {
 	
 	private static Connection conn = null;
@@ -39,7 +40,7 @@ public class DB {
 	}
 	
 	private static Properties loadProperties() {
-		try (FileInputStream fs = new FileInputStream("db.properties")){
+		try (FileInputStream fs = new FileInputStream("./properties/db.properties")){
 			Properties props = new Properties();
 			props.load(fs);
 			return props;
