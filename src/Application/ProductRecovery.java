@@ -22,8 +22,8 @@ public class ProductRecovery {
 			rs = st.executeQuery("select * from product");
 	
 			while (rs.next()) {
-				System.out.println("Name product: " + rs.getString("NAME_PRODUCT") + "\nAmount product: "
-						+ rs.getInt("AMOUNT_PRODUCT") + "\nPrice product: " + rs.getDouble("PRICE_PRODUCT"));
+				System.out.println("Name product: " + rs.getString("NAME") + "\nAmount product: "
+						+ rs.getInt("AMOUNT") + "\nPrice product: " + rs.getDouble("PRICE"));
 			}
 		}
 		catch(SQLException e){

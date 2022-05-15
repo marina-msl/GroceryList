@@ -41,6 +41,16 @@ public class MainGui {
 	    c.gridy = 0;
 	    pane.add(jLabelProduct, c);
 	 
+	    JTextField txtFieldProduct;
+	    txtFieldProduct = new JTextField("enter with name");
+	    c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 40;      //make this component tall
+	    c.weightx = 0.0;
+	    c.gridwidth = 1;
+	    c.gridx = 0;
+	    c.gridy = 1;
+	    pane.add(txtFieldProduct, c);
+	    
 	    jLabelProduct = new JLabel("Amount");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 0.5;
@@ -48,6 +58,18 @@ public class MainGui {
 	    c.gridy = 0;
 	    pane.add(jLabelProduct, c);
 	 
+	    
+	    //JTextField txtFieldProduct;
+	    txtFieldProduct = new JTextField("enter with amount");
+	    c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 40;      //make this component tall
+	    c.weightx = 0.0;
+	    c.gridwidth = 1;
+	    c.gridx = 1;
+	    c.gridy = 1;
+	    pane.add(txtFieldProduct, c);
+	    
+	    
 	    jLabelProduct = new JLabel("Price");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 0.5;
@@ -55,15 +77,15 @@ public class MainGui {
 	    c.gridy = 0;
 	    pane.add(jLabelProduct, c);
 	 
-	    JTextField txtFieldProduct;
-	    txtFieldProduct = new JTextField("product name");
+	    txtFieldProduct = new JTextField("enter with price");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 40;      //make this component tall
 	    c.weightx = 0.0;
-	    c.gridwidth = 3;
-	    c.gridx = 0;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
 	    c.gridy = 1;
 	    pane.add(txtFieldProduct, c);
+	    
 	 
 	    JButton buttonAddProduct;
 	    buttonAddProduct = new JButton("Add Product");
@@ -76,8 +98,25 @@ public class MainGui {
 	    c.gridwidth = 2;   //2 columns wide
 	    c.gridy = 2;       //third row
 	    pane.add(buttonAddProduct, c);
-	    }
+	    
+	    
+	    jLabelProduct = new JLabel("Produt's List");
+	    c.fill = GridBagConstraints.HORIZONTAL;
+	    c.weightx = 0.5;
+	    c.gridx = 3;
+	    c.gridy = 3;
+	    pane.add(jLabelProduct, c);
 	 
+	    txtFieldProduct = new JTextField("Products in the list");
+	    c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 40;      //make this component tall
+	    c.weightx = 0.0;
+	    c.gridwidth = 1;
+	    c.gridx = 4;
+	    c.gridy = 1;
+	    pane.add(txtFieldProduct, c);
+}
+	    
 	    /**
 	     * Create the GUI and show it.  For thread safety,
 	     * this method should be invoked from the
