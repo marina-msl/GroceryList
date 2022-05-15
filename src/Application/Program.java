@@ -12,12 +12,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import GUI.ProductsView;
 import db.DB;
 import db.DbException;
+import model.dao.DaoFactory;
+import model.dao.ProductDao;
 
 public class Program {
 	
 	public static void main(String[] args) {
+		
+		ProductsView.createAndShowGUI();
+		
+		ProductDao product = DaoFactory.createProductDao();
+		
 		
 		Scanner sc = new Scanner(System.in);
 		// ---------------> Requesting data's products from users

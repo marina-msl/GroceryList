@@ -6,13 +6,15 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class MainGui {
+public class ProductsView {
 
 	
 	 final static boolean shouldFill = true;
@@ -92,18 +94,27 @@ public class MainGui {
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 0;       //reset to default
 	    c.weighty = 1.0;   //request any extra vertical space
-	    c.anchor = GridBagConstraints.PAGE_END; //bottom of space
+	    c.anchor = GridBagConstraints.NORTH; //bottom of space
 	    c.insets = new Insets(10,0,0,0);  //top padding
-	    c.gridx = 1;       //aligned with button 2
-	    c.gridwidth = 2;   //2 columns wide
+	    c.gridx = 2;       //aligned with button 2
+	    c.gridwidth = 1;   //2 columns wide
 	    c.gridy = 2;       //third row
 	    pane.add(buttonAddProduct, c);
+	    
+	    buttonAddProduct.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Oi gente!");
+				
+			}
+		});
 	    
 	    
 	    jLabelProduct = new JLabel("Produt's List");
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 0.5;
-	    c.gridx = 3;
+	    c.gridx = 0;
 	    c.gridy = 3;
 	    pane.add(jLabelProduct, c);
 	 
@@ -112,8 +123,8 @@ public class MainGui {
 	    c.ipady = 40;      //make this component tall
 	    c.weightx = 0.0;
 	    c.gridwidth = 1;
-	    c.gridx = 4;
-	    c.gridy = 1;
+	    c.gridx = 0;
+	    c.gridy = 4;
 	    pane.add(txtFieldProduct, c);
 }
 	    
@@ -122,7 +133,7 @@ public class MainGui {
 	     * this method should be invoked from the
 	     * event-dispatching thread.
 	     */
-	    private static void createAndShowGUI() {
+	    public static void createAndShowGUI() {
 	        //Create and set up the window.
 	        JFrame frame = new JFrame("Grocery List");
 	        frame.setMinimumSize(new Dimension(350,500));
@@ -136,14 +147,11 @@ public class MainGui {
 	        frame.setVisible(true);
 	    }
 	 
-	    public static void main(String[] args) {
-	        //Schedule a job for the event-dispatching thread:
-	        //creating and showing this application's GUI.
-	        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-	            public void run() {
-	                createAndShowGUI();
-	            }
-	        });
-	    }
+		/*
+		 * public static void main(String[] args) { //Schedule a job for the
+		 * event-dispatching thread: //creating and showing this application's GUI.
+		 * javax.swing.SwingUtilities.invokeLater(new Runnable() { public void run() {
+		 * createAndShowGUI(); } }); }
+		 */
 	
 }
