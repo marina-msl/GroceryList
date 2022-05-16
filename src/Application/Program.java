@@ -17,66 +17,48 @@ import db.DB;
 import db.DbException;
 import model.dao.DaoFactory;
 import model.dao.ProductDao;
+import model.entities.Product;
 
 public class Program {
 	
 	public static void main(String[] args) {
 		
-		ProductsView.createAndShowGUI();
+		//ProductsView.createAndShowGUI();
 		
-		ProductDao product = DaoFactory.createProductDao();
+		
+		//ja esta conectado
+		ProductDao productDao = DaoFactory.createProductDao();
 		
 		
 		Scanner sc = new Scanner(System.in);
 		// ---------------> Requesting data's products from users
 		  System.out.println("Digite o nome do produto"); 
-		  String name_product = sc.next();
+		  String name = sc.next();
+				
+		  System.out.println("Digite o preço do produto"); 
+		  double price = sc.nextDouble();
 		  
 		  System.out.println("Digite a quantidade do produto"); 
-		  int amount_product = sc.nextInt();
+		  int amount = sc.nextInt();
 		  
-		  System.out.println("Digite o preço do produto"); 
-		  double price_product = sc.nextDouble();
+		  Product p = new Product(name, price, amount);
 		 
 		
-		// --------------> Inserting datas in database
-		Connection conn = null;
-		PreparedStatement st = null;
-		try {
-			conn = DB.getConnection();
-			
-			st = conn.prepareStatement(
-					"INSERT INTO product "
-					+ "(NAME, PRICE, AMOUNT)"
-					+ "VALUES "
-					+ "(?, ?, ?)");
-					
-			
-			st.setString(1, name_product);
-			st.setDouble(2, price_product);
-			st.setInt(3, amount_product);
-			
-			int rowsAffected = st.executeUpdate();
-			
-			System.out.println("Done! Rows affected: " + rowsAffected);
-		}
-		catch (SQLException e) {
-			throw new DbException(e.getMessage());
-		}
-		/*
-		 * finally { DB.closeStatement(st); DB.closeConnection(); }
-		 */
+		// insert testing
+		 productDao.insert(p);
+		 System.out.println("Inserted! New product " + p.getName() + " id: " + p.getId());
+		
 		
 		// --------------> Recovering data
 		
-		//Connection conn = null;
+		Connection conn = null;
 		
-		Statement statement = null;
+		Statement st = null;
 		ResultSet rs = null;
 
 			try{
 				conn = DB.getConnection();
-				statement = conn.createStatement();
+				st = conn.createStatement();
 				rs = st.executeQuery("select * from product");
 		
 				while (rs.next()) {
@@ -89,7 +71,7 @@ public class Program {
 			}
 			finally	{
 				DB.closeResultSet(rs);
-				DB.closeStatement(statement);
+				DB.closeStatement(st);
 				DB.closeConnection();
 			}
 			

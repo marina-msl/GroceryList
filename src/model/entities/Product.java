@@ -5,11 +5,8 @@ public class Product {
 	private String name;
 	private double price;
 	private int amount;
+	private int id;
 	
-	
-	public Product() {
-		//Nada a declarar
-	}
 	
 	public Product(String name, double price, int amount) {
 		this.name = name;
@@ -39,5 +36,13 @@ public class Product {
 	
 	public int getAmount() {
 		return amount;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }

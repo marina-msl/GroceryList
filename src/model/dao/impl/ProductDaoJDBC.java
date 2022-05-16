@@ -2,6 +2,7 @@ package model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -39,7 +40,17 @@ public class ProductDaoJDBC implements ProductDao{
 			
 			int rowsAffected = st.executeUpdate();
 			
-			System.out.println("Done! Rows affected: " + rowsAffected);
+			if(rowsAffected > 0) {
+				ResultSet rs = st.getGeneratedKeys();
+				if(rs.next()) {
+					int id = rs.getInt(1);
+					obj.setId(id);
+				}
+				DB.closeResultSet(rs);
+			}
+			else {
+				throw new DbException("Unexpected error! No rows affected.");
+			}
 		}
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
