@@ -8,6 +8,7 @@ package Application;
 import java.util.List;
 import java.util.Scanner;
 
+import GUI.ProductsView;
 import model.dao.DaoFactory;
 import model.dao.ProductDao;
 import model.entities.Product;
@@ -16,7 +17,7 @@ public class Program {
 	
 	public static void main(String[] args) {
 		
-		//ProductsView.createAndShowGUI();
+		ProductsView.createAndShowGUI();
 		
 		
 		//ja esta conectado
