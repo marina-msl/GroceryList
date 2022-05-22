@@ -5,6 +5,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.dao.DaoFactory;
 import model.dao.ProductDao;
@@ -21,6 +22,8 @@ public class ProductsController {
 	@FXML
 	private Label amount;
 	
+	@FXML
+	private Label productsList;
 	
 	@FXML
 	private TextField txtProduct;
@@ -34,28 +37,46 @@ public class ProductsController {
 	@FXML
 	private Button btAddProduct;
 	
+	@FXML
+	private Button btModifyProduct;
 	
 	@FXML
-	public void onBtAddProductAction() {
-		ProductDao productDao = DaoFactory.createProductDao();
-		System.out.println("Click");
-		
+	private Button btRemoveProduct;
+	
+	@FXML
+	private Button btUpdateProductsList;
+	
+	@FXML
+	private TextArea txtAreaList;
+
+	ProductDao productDao = DaoFactory.createProductDao();
+	
+	@FXML
+	public Product onBtAddProductAction() {
 		String nameProduct = txtProduct.getText();
 		double priceProduct = Double.parseDouble(txtPrice.getText());
 		int amountProduct = Integer.parseInt(txtAmount.getText());
+		
 		Product p = new Product(nameProduct, priceProduct, amountProduct);
 		productDao.insert(p);
+		onBtUpdateProductsList();
+
+		return p;
+	}
+	
+	@FXML
+	public void onBtUpdateProductsList() {
+	List<Product> list = productDao.findAll();
+	txtAreaList.setText("Product      Amout       Price\n");
+	
+	for (Product plist : list) {
+		txtAreaList.appendText(plist.getName() 
+				+ "      " + plist.getAmount() 
+				+ "      " + plist.getPrice()
+				+ "\n");
+	}
 		
-		 System.out.println("Inserted! New product " + p.getName() + " id: " + p.getId());
-			
-			
-		// --------------> Recovering data
-		 System.out.println("Product List");
-		List<Product> list = productDao.findAll();
-		for (Product plist : list) {
-			System.out.println(plist.getName());
 		
-		}
 	}
 }
 	
