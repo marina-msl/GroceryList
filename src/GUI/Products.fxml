@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="255.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProductsController">
+<AnchorPane prefHeight="476.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProductsController">
    <children>
       <TextField fx:id="txtProduct" layoutX="15.0" layoutY="34.0" />
       <TextField fx:id="txtPrice" layoutX="15.0" layoutY="85.0" />
@@ -20,9 +21,12 @@
       <SplitPane layoutX="-405.0" layoutY="5.0" prefHeight="160.0" prefWidth="200.0" />
     <AnchorPane layoutX="29.0" layoutY="-4.0" minHeight="0.0" minWidth="0.0" prefHeight="18.0" prefWidth="112.0" />
       <TextArea fx:id="txtAreaList" layoutX="278.0" layoutY="28.0" prefHeight="180.0" prefWidth="232.0" />
-      <Button fx:id="btRemoveProduct" layoutX="197.0" layoutY="107.0" mnemonicParsing="false" text="Remove" />
-      <Button fx:id="btModifyProduct" layoutX="200.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Modify" />
+      <Button fx:id="btRemoveProduct" layoutX="198.0" layoutY="107.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Remove" />
+      <Button fx:id="btModifyProduct" layoutX="201.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Modify" />
       <Label fx:id="productsList" layoutX="278.0" layoutY="8.0" text="Products List" />
-      <Button fx:id="btUpdateProductsList" layoutX="278.0" layoutY="214.0" mnemonicParsing="false" onAction="#onBtUpdateProductsList" prefHeight="26.0" prefWidth="104.0" text="Update List" />
+      <Button fx:id="btUpdateProductsList" layoutX="278.0" layoutY="225.0" mnemonicParsing="false" onAction="#onBtUpdateProductsList" prefHeight="26.0" prefWidth="104.0" text="Update List" />
+      <ListView fx:id="listView" layoutX="278.0" layoutY="260.0" prefHeight="206.0" prefWidth="232.0" />
+      <Button fx:id="PdfFileGenerator" layoutX="199.0" layoutY="148.0" mnemonicParsing="false" onAction="#onBtPdfFileGenerator" text="PDF file" />
+      <Button fx:id="TxtFileGenerator" layoutX="198.0" layoutY="183.0" mnemonicParsing="false" onAction="#onBtTxtFileGenerator" text="Txt File" />
    </children>
 </AnchorPane>
