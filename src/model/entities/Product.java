@@ -1,5 +1,8 @@
 package model.entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Product {
 
 	private String name;
@@ -44,5 +47,10 @@ public class Product {
 	
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return  name  + price + amount +  id;
 	}
 }
