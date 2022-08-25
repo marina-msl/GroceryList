@@ -1,18 +1,18 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.ScrollPane;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.AbstractTableModel;
 
 public class GroceryListView extends JFrame {
 
@@ -34,54 +34,66 @@ public class GroceryListView extends JFrame {
 
 	private void buildLayout() {
 		JPanel pane = new JPanel();
-		setContentPane(pane);
-		setLayout(new BorderLayout());
-		
-		pane.add(createPanel(), BorderLayout.NORTH);
-		pane.add(createTable(), BorderLayout.SOUTH);
+		add(pane);
+		pane.setLayout(new GridBagLayout());
 
-	}
-
-	private JComponent createTable() {
-		JPanel pane = new JPanel();
-		JTable listTable = new JTable();
-		
-		listLbl = new JLabel("List");
-		pane.add(listLbl);
-		
-		GroceryListTableModel model = new GroceryListTableModel(); 
-		listTable.setModel(model);
-		pane.add(listTable);
-
-		return pane;
-	}
-
-	private JComponent createPanel() {
-
-		JPanel pane = new JPanel();
-		
 		productLbl = new JLabel("Product");
-		pane.add(productLbl);
+		GridBagConstraints c1 = createGridBagConstraints(0,0);
+		pane.add(productLbl, c1);
 
 		productTextField = new JTextField();
-		pane.add(productTextField);
+		GridBagConstraints c2 = createGridBagConstraints(0, 1);
+		pane.add(productTextField, c2);
 
 		amountLbl = new JLabel("Amount");
-		pane.add(amountLbl);
+		GridBagConstraints c3 = createGridBagConstraints(1, 0);
+		pane.add(amountLbl, c3);
 
 		amountTextField = new JTextField();
-		pane.add(amountTextField);
+		GridBagConstraints c4 = createGridBagConstraints(1, 1);
+		pane.add(amountTextField, c4);
 
 		priceLbl = new JLabel("Price");
-		pane.add(productLbl);
+		GridBagConstraints c5 = createGridBagConstraints(2, 0);
+		pane.add(priceLbl, c5);
 
 		priceTextField = new JTextField();
-		pane.add(priceTextField);
+		GridBagConstraints c6 = createGridBagConstraints(2, 1);
+		pane.add(priceTextField, c6);
 
 		JButton addProductButton = new JButton("Add Product");
-		pane.add(addProductButton);
+		GridBagConstraints c7 = createGridBagConstraints(2, 3);
+		pane.add(addProductButton, c7);
 
-		return pane;
+		JTable listTable = new JTable();
+
+		listLbl = new JLabel("List");
+		GridBagConstraints c8 = createGridBagConstraints(0, 4);
+		pane.add(listLbl, c8);
+
+		GroceryListTableModel model = new GroceryListTableModel();
+		listTable.setModel(model);
+		GridBagConstraints c9 = createGridBagConstraints(0, 5);
+		c9.gridwidth = 3;
+		c9.gridheight = 1;
+		pane.add(new JScrollPane(listTable), c9);
+	}
+
+	private GridBagConstraints createGridBagConstraints(int coluna, int linha) {
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = coluna;
+		gbc.gridy = linha;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.ipadx = 0;
+		gbc.ipady = 0;
+		gbc.ipady = 0;
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
+		return gbc;
 	}
 
 	private void config() {
