@@ -1,15 +1,16 @@
-package model.entities;
+package domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Product {
 
+	@Id
+	private int id;
 	private String name;
 	private double price;
 	private int amount;
-	private int id;
-	
 	
 	public Product(String name, double price, int amount) {
 		this.name = name;
@@ -17,6 +18,18 @@ public class Product {
 		this.amount = amount;
 	}
 	
+	public Product() {
+
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -39,14 +52,6 @@ public class Product {
 	
 	public int getAmount() {
 		return amount;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public int getId() {
-		return id;
 	}
 
 	@Override
